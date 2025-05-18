@@ -12,7 +12,9 @@ public class BankApp {
             System.out.println("1. Open Account");
             System.out.println("2. Deposit");
             System.out.println("3. Withdraw");
-            System.out.println("4. Exit");
+            System.out.println("4. Display Bank and Account Details");
+            System.out.println("5. Exit");
+
             System.out.print("Select Option: ");
             int choice = sc.nextInt();
             sc.nextLine(); // consume newline
@@ -88,9 +90,27 @@ public class BankApp {
                     }
                     break;
                 case 4:
+                    if (bank == null) {
+                        System.out.println("No bank selected. Open an account first.");
+                        break;
+                    }
+
+                    bank.displayBankInfo();
+                    System.out.println("--- Account Details ---");
+                    for (Account acc1 : bank.getAccounts()) {
+                        acc1.showAccountType();
+                        System.out.println("Holder: " + acc1.getHolderName());
+                        System.out.println("Account Number: " + acc1.getAccountNumber());
+                        System.out.println("Balance: ₹" + acc1.getBalance());
+                        System.out.println("-----------------------------");
+                    }
+                    break;
+                case 5:
                     System.out.println("Thank you. Exiting...");
                     sc.close();
                     return;
+
+
 
                   
 

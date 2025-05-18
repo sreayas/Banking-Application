@@ -10,6 +10,20 @@ public abstract class Bank {
     protected String bankCode;
     protected List<Account> accounts = new ArrayList<>();
 
+    public Account findAccount1(String accountNumber) {
+        for (Account acc : accounts) {
+            if (acc.getAccountNumber().equals(accountNumber)) {
+                return acc;
+            }
+        }
+        return null;
+    }
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+
     public Bank(String bankName, String branchName) {
         this.bankName = bankName;
         this.branchName = branchName;
