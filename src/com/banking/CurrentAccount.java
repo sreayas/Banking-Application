@@ -9,5 +9,17 @@ public class CurrentAccount extends Account {
     public void showAccountType() {
         System.out.println("Account Type: Current Account");
     }
+
+	@Override
+	public void deposit(double amount) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void withdraw(double amount) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 

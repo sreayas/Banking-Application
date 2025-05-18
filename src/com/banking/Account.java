@@ -11,8 +11,6 @@ public abstract class Account implements AccountOperations {
         this.balance = balance;
     }
 
-    public abstract void showAccountType();
-
     public String getAccountNumber() {
         return accountNumber;
     }
@@ -21,23 +19,13 @@ public abstract class Account implements AccountOperations {
         return holderName;
     }
 
-    @Override
     public double getBalance() {
         return balance;
     }
 
-    @Override
-    public void deposit(double amount) {
-        balance += amount;
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
-    @Override
-    public void withdraw(double amount) {
-        if (amount <= balance) {
-            balance -= amount;
-        } else {
-            System.out.println("Insufficient balance.");
-        }
-    }
+    public abstract void showAccountType();
 }
-
