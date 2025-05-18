@@ -11,7 +11,8 @@ public class BankApp {
             System.out.println("\n=== Banking Application ===");
             System.out.println("1. Open Account");
             System.out.println("2. Deposit");
-            System.out.println("3. Exit");
+            System.out.println("3. Withdraw");
+            System.out.println("4. Exit");
             System.out.print("Select Option: ");
             int choice = sc.nextInt();
             sc.nextLine(); // consume newline
@@ -70,9 +71,28 @@ public class BankApp {
                     break;
 
                 case 3:
+                    if (bank == null) {
+                        System.out.println("No bank initialized. Open an account first.");
+                        break;
+                    }
+                    System.out.print("Enter Account Number: ");
+                    String withAccNo = sc.nextLine();
+                    Account accToWithdraw = bank.findAccount(withAccNo);
+                    if (accToWithdraw != null) {
+                        System.out.print("Enter Amount to Withdraw: ");
+                        double amt = sc.nextDouble(); sc.nextLine();
+                        accToWithdraw.withdraw(amt);
+                        System.out.println("Remaining Balance: ₹" + accToWithdraw.getBalance());
+                    } else {
+                        System.out.println("Account not found.");
+                    }
+                    break;
+                case 4:
                     System.out.println("Thank you. Exiting...");
                     sc.close();
                     return;
+
+                  
 
                 default:
                     System.out.println("Invalid Option.");
